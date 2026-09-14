@@ -15,9 +15,13 @@
     <header>
         <h1>SGA Romania Student Chapter</h1>
         <nav>
-            <a href="index.html">Home</a>
+            <a href="home.html">Home</a>
             <a href="about.html">About</a>
             <a href="events.html">Events</a>
+            <a href="library.html" class="nav-item">
+                <span>Library</span>
+                <span class="nav-tag">TBA</span>
+            </a>
             <a href="team.html">Team</a>
             <a href="contact.html" aria-current="page">Contact</a>
         </nav>
@@ -43,21 +47,6 @@
         &copy; 2026 SGA Romania Student Chapter
     </footer>
 
-    <script>
-        (function () {
-            const header = document.querySelector('header');
-            if (!header) return;
-
-            const mediaQuery = window.matchMedia('(max-width: 700px)');
-            const updateHeaderState = () => {
-                const shouldStick = mediaQuery.matches && window.scrollY > 8;
-                header.classList.toggle('is-scrolled', shouldStick);
-            };
-
-            updateHeaderState();
-            window.addEventListener('scroll', updateHeaderState, { passive: true });
-            window.addEventListener('resize', updateHeaderState);
-        })();
-    </script>
+    <script src="js/site.js"></script>
 </body>
 </html>

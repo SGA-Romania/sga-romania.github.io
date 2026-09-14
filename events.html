@@ -15,9 +15,13 @@
     <header>
         <h1>SGA Romania Student Chapter</h1>
         <nav>
-            <a href="index.html">Home</a>
+            <a href="home.html">Home</a>
             <a href="about.html">About</a>
             <a href="events.html" aria-current="page">Events</a>
+            <a href="library.html" class="nav-item">
+                <span>Library</span>
+                <span class="nav-tag">TBA</span>
+            </a>
             <a href="team.html">Team</a>
             <a href="contact.html">Contact</a>
         </nav>
@@ -94,8 +98,8 @@
                                 <a class="event-share" href="#event-silicate-melts" aria-label="Share International School on Silicate Melts">Share</a>
                             </summary>
                             <div class="event-body">
-                                <p>Explore the journey from atomic structure to geological samples, outcrops, and large-scale magma chambers, led by Dr. Răzvan Caracaș. Find more details <a href="https://razvancaracas.info/school-on-silicate-melts/" target="_blank" rel="noopener noreferrer">here</a>.</p>
-                                <div class="event-signup is-pending">Link to be announced</div>
+                                <p>Explore the journey from atomic structure to geological samples, outcrops, and large-scale magma chambers, led by Dr. Răzvan Caracaș.</p>
+                                <div class="event-signup is-confirmed"><a href="event-silicate-melts.html">View details</a></div>
                                 <a class="event-image-link" href="img/Workshop_April_2027.png" target="_blank" rel="noopener noreferrer" aria-label="Open the 2027 workshop poster full size">
                                     <img class="event-image" src="img/Workshop_April_2027.png" alt="International School on Silicate Melts poster for 26 to 29 April 2027 in Bucharest">
                                 </a>
@@ -107,106 +111,8 @@
         </section>
     </main>
 
-    <script>
-        const syncEventShareState = () => {
-            const hash = window.location.hash;
-            if (!hash) return;
-
-            const target = document.querySelector(hash);
-            if (target && target.tagName === 'DETAILS') {
-                target.open = true;
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        };
-
-        document.addEventListener('DOMContentLoaded', () => {
-            syncEventShareState();
-
-            const shareSheet = document.getElementById('share-sheet');
-            const closeShareSheet = () => {
-                if (!shareSheet) return;
-                shareSheet.classList.remove('is-open');
-                shareSheet.setAttribute('aria-hidden', 'true');
-            };
-
-            const openShareSheet = (shareUrl, eventTitle) => {
-                if (!shareSheet) return false;
-
-                shareSheet.dataset.shareUrl = shareUrl;
-                shareSheet.dataset.eventTitle = eventTitle;
-                shareSheet.classList.add('is-open');
-                shareSheet.setAttribute('aria-hidden', 'false');
-                return true;
-            };
-
-            const performShareAction = async (platform, shareUrl, eventTitle) => {
-                const text = `${eventTitle} — SGA Romania Student Chapter`;
-
-                if (platform === 'copy') {
-                    try {
-                        await navigator.clipboard.writeText(shareUrl);
-                        return 'Copied';
-                    } catch (error) {
-                        window.location.href = shareUrl;
-                        return 'Opened';
-                    }
-                }
-
-                if (platform === 'whatsapp') {
-                    window.open(`https://wa.me/?text=${encodeURIComponent(`${text} ${shareUrl}`)}`, '_blank', 'noopener,noreferrer');
-                    return 'WhatsApp';
-                }
-
-                return null;
-            };
-
-            document.querySelectorAll('.share-option').forEach((button) => {
-                button.addEventListener('click', async (event) => {
-                    event.preventDefault();
-                    const platform = button.dataset.sharePlatform;
-                    const shareUrl = shareSheet?.dataset.shareUrl || '';
-                    const eventTitle = shareSheet?.dataset.eventTitle || 'Event';
-
-                    const label = await performShareAction(platform, shareUrl, eventTitle);
-                    if (label) {
-                        closeShareSheet();
-                    }
-                });
-            });
-
-            document.querySelector('.share-close')?.addEventListener('click', closeShareSheet);
-            shareSheet?.querySelector('[data-close-share]')?.addEventListener('click', closeShareSheet);
-
-            document.querySelectorAll('.event-share').forEach((link) => {
-                link.addEventListener('click', async (event) => {
-                    event.preventDefault();
-
-                    const details = link.closest('.event-row');
-                    const shareUrl = new URL(`${window.location.pathname}#${details.id}`, window.location.href).toString();
-                    const eventTitle = details.dataset.title || details.querySelector('.event-name')?.textContent || 'Event';
-
-                    try {
-                        if (navigator.share && navigator.canShare) {
-                            const shareData = {
-                                title: 'SGA Romania Student Chapter',
-                                text: eventTitle,
-                                url: shareUrl
-                            };
-
-                            if (navigator.canShare(shareData)) {
-                                await navigator.share(shareData);
-                                return;
-                            }
-                        }
-                    } catch (error) {
-                        // continue to the fallback share sheet
-                    }
-
-                    openShareSheet(shareUrl, eventTitle);
-                });
-            });
-        });
-    </script>
+    <script src="js/events.js"></script>
+    <script src="js/site.js"></script>
 
     <div class="share-sheet" id="share-sheet" aria-hidden="true">
         <div class="share-sheet-backdrop" data-close-share></div>
@@ -226,21 +132,6 @@
         &copy; 2026 SGA Romania Student Chapter
     </footer>
 
-    <script>
-        (function () {
-            const header = document.querySelector('header');
-            if (!header) return;
-
-            const mediaQuery = window.matchMedia('(max-width: 700px)');
-            const updateHeaderState = () => {
-                const shouldStick = mediaQuery.matches && window.scrollY > 8;
-                header.classList.toggle('is-scrolled', shouldStick);
-            };
-
-            updateHeaderState();
-            window.addEventListener('scroll', updateHeaderState, { passive: true });
-            window.addEventListener('resize', updateHeaderState);
-        })();
-    </script>
+    <script src="js/site.js"></script>
 </body>
 </html>
