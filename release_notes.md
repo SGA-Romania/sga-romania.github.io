@@ -1,4 +1,6 @@
 #New
+    AA & RN, 24-09-2026:
+        - updated April school page to be in sync with Razvan's page;
     AA, 14-09-2026:
         - added new page for the April School;
         - small repo adjustments;
