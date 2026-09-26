@@ -1,0 +1,25 @@
+---
+layout: base.njk
+mainClass: text-page event-detail-page
+nav_label: Events
+---
+<section class="event-detail-card">
+{% if kicker %}<p class="event-kicker">{{ kicker }}</p>{% endif %}
+<h2>{{ title }}</h2>
+{% if subtitle %}<h3>{{ subtitle }}</h3>{% endif %}
+<div class="event-meta-row">
+<span><strong>Date:</strong> {{ date }}</span>
+<span><strong>Location:</strong> {{ location }}</span>
+</div>
+{{ content | safe }}
+{% if image %}
+<div class="event-poster-wrap">
+<a class="event-image-link" href="{{ image }}" target="_blank" rel="noopener noreferrer" aria-label="Open the {{ title }} poster full size">
+<img class="event-image" src="{{ image }}" alt="{{ image_alt }}">
+</a>
+</div>
+{% endif %}
+<div class="event-detail-actions">
+<a href="events.html" class="button-link">Back to events</a>
+</div>
+</section>

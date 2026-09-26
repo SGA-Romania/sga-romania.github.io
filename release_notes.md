@@ -1,4 +1,6 @@
 #New
+    AA, 26-09-2026:
+        - add admin panel (first try);
     AA & RN, 24-09-2026:
         - updated April school page to be in sync with Razvan's page;
     AA, 14-09-2026:

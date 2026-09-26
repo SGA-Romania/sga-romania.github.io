@@ -1,0 +1,27 @@
+---
+layout: base.njk
+mainClass: contact-layout
+permalink: /contact.html
+nav_label: Contact
+heading: Contact Us
+map_note: Our chapter is based at the University of Bucharest.
+map_embed_url: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d661.3023541338893!2d26.101946628620986!3d44.43605519747091!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ffd3d8a8139d%3A0xecfe604747e032e!2sThe%20Faculty%20of%20Geology!5e0!3m2!1sen!2sro!4v1788870228117!5m2!1sen!2sro"
+contacts:
+  - name: "Valentina Toma"
+    email: "andreea-valentina.toma@s.unibuc.ro"
+  - name: "Andreea Avram"
+    email: "georgiana-andreea.avram@s.unibuc.ro"
+---
+<section>
+<h2>{{ heading }}</h2>
+{% for c in contacts %}
+<p>{{ c.name }}, <i>{{ c.email }}</i></p>
+{% endfor %}
+</section>
+<section class="map-section">
+<h2>Find Us</h2>
+<p>{{ map_note }}</p>
+<div class="map-frame">
+<iframe src="{{ map_embed_url }}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</div>
+</section>

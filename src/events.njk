@@ -1,0 +1,63 @@
+---
+layout: base.njk
+mainClass: events-page
+permalink: /events.html
+nav_label: Events
+---
+<section>
+<div class="events-heading">
+<h2>Upcoming Events</h2>
+<p class="events-subtitle">A compact overview of chapter activities and opportunities.</p>
+</div>
+<div class="event-years">
+{% for group in collections.eventsByYear %}
+<div class="event-year">
+<h3 class="event-year-title">{{ group.year }}</h3>
+<div class="events-table" role="list">
+{% for item in group.items %}
+{% set e = item.data %}
+<details class="event-row" id="event-{{ e.slug }}" data-title="{{ e.title }}">
+<summary>
+<span class="event-expand" aria-hidden="true"></span>
+<span class="event-name">{{ e.title }}</span>
+<span class="event-date">{{ e.date }}</span>
+<span class="event-location">{{ e.location }}</span>
+<span class="event-status status-{{ e.status }}">{{ e.status_label }}</span>
+<a class="event-share" href="#event-{{ e.slug }}" aria-label="Share {{ e.title }}">Share</a>
+</summary>
+<div class="event-body">
+<p>{{ e.summary }}</p>
+{% if e.signup_url %}
+<div class="event-signup is-confirmed"><a href="{{ e.signup_url }}">Sign up</a></div>
+{% elif e.detail_page %}
+<div class="event-signup is-confirmed"><a href="event-{{ e.slug }}.html">View details</a></div>
+{% else %}
+<div class="event-signup is-pending">Link to be announced</div>
+{% endif %}
+{% if e.image %}
+<a class="event-image-link" href="{{ e.image }}" target="_blank" rel="noopener noreferrer" aria-label="Open the {{ e.title }} poster full size">
+<img class="event-image" src="{{ e.image }}" alt="{{ e.image_alt }}">
+</a>
+{% endif %}
+</div>
+</details>
+{% endfor %}
+</div>
+</div>
+{% endfor %}
+</div>
+</section>
+<script src="js/events.js"></script>
+<div class="share-sheet" id="share-sheet" aria-hidden="true">
+<div class="share-sheet-backdrop" data-close-share></div>
+<div class="share-sheet-panel" role="dialog" aria-modal="true" aria-label="Share event">
+<div class="share-sheet-header">
+<strong>Share event</strong>
+<button type="button" class="share-close" aria-label="Close share menu">×</button>
+</div>
+<div class="share-sheet-actions">
+<a class="share-option" data-share-platform="copy" href="#">Copy link</a>
+<a class="share-option" data-share-platform="whatsapp" href="#">WhatsApp</a>
+</div>
+</div>
+</div>
