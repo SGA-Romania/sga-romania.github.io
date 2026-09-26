@@ -4,7 +4,7 @@ permalink: false
 title: "Start of Year"
 slug: start-of-year
 year: 2026
-date: "October 2026"
+event_date: "October 2026"
 location: "University of Bucharest"
 status: tba
 status_label: "TBA"

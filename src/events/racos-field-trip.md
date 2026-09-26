@@ -4,7 +4,7 @@ permalink: false
 title: "Field Trip: Mineralogy of Volcanic Rocks and Mineral Resources of the Racoș Area"
 slug: racos-field-trip
 year: 2026
-date: "October 2026"
+event_date: "October 2026"
 location: "Racoș Area"
 status: tba
 status_label: "TBA"

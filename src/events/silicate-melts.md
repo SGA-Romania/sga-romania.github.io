@@ -4,7 +4,7 @@ permalink: /event-silicate-melts.html
 title: "International School on Silicate Melts"
 slug: silicate-melts
 year: 2027
-date: "26–29 April 2027"
+event_date: "26–29 April 2027"
 location: "Faculty of Geology and Geophysics, University of Bucharest"
 status: confirmed
 status_label: "Confirmed"

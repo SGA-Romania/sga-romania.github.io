@@ -4,7 +4,7 @@ permalink: false
 title: "Online Workshops"
 slug: online-workshops
 year: 2026
-date: "To be announced"
+event_date: "To be announced"
 location: "Online"
 status: tba
 status_label: "TBA"
