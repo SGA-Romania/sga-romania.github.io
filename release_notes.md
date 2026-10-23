@@ -1,4 +1,6 @@
 #New
+    AA, 23-10-2026:
+        - added logo, udpated team members, added sign up form;
     AA & RN, 24-09-2026:
         - updated April school page to be in sync with Razvan's page;
     AA, 14-09-2026:
